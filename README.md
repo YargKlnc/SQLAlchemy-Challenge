@@ -72,17 +72,19 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 
 * API Static Routes
 
-A precipitation route that:
+    A precipitation route that:
 
     •	Returns json with the date as the key and the value as the precipitation 
 
     •	Only returns the jsonified precipitation data for the last year in the database 
 
-A stations route that:
+
+    A stations route that:
 
     •	Returns jsonified data of all of the stations in the database 
 
-A tobs route that:
+
+    A tobs route that:
 
     •	Returns jsonified data for the most active station (USC00519281) 
 
@@ -92,19 +94,21 @@ A tobs route that:
 
 * API Dynamic Route 
 
-  A start route that:
+    A start route that:
   
     •	Accepts the start date as a parameter from the URL
   
     •	Returns the min, max, and average temperatures calculated from the given start date to the end of the dataset
   
-  A start/end route that:
+
+    A start/end route that:
   
     •	Accepts the start and end dates as parameters from the URL
    
     •	Returns the min, max, and average temperatures calculated from the given start date to the given end date 
 
-  Coding Conventions and Formatting:
+
+    Coding Conventions and Formatting:
   
     •	Place imports at the top of the file, just after any module comments and docstrings, and before module globals and constants
   
