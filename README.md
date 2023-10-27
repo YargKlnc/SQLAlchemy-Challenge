@@ -3,9 +3,9 @@ UofT Data Analytics SQL Alchemy Challenge by YK
 
 # Background
 
-A trip planning project! Decided for a long holiday vacation in Honolulu, Hawaii this work will help to plan the trip with climate and precipitation analysis about the area.
+**"A trip planning project! Decided for a long holiday vacation in Honolulu, Hawaii this work will help to plan the trip with climate and precipitation analysis about the area."**
 
-*** Part 1: Climate Data Analysis and Exploration
+**Part 1: Climate Data Analysis and Exploration**
 
 Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climate analysis and data exploration of climate database.  
 
@@ -35,6 +35,8 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 •	Save the query results to a Pandas DataFrame 
 •	Correctly plot a histogram with bins=12 for the last year of data using tobs as the column to count
 
+**Part 2: Designing a Climate App Flask API Based on Initial Analysis**
+
 * API SQLite Connection & Landing Page 
 
 •	Correctly generate the engine to the correct sqlite file 
@@ -56,20 +58,16 @@ A tobs route that:
 
 * API Dynamic Route 
 
-A start route that:
-•	Accepts the start date as a parameter from the URL 
-•	Returns the min, max, and average temperatures calculated from the given start date to the end of the dataset 
-A start/end route that:
-•	Accepts the start and end dates as parameters from the URL 
-•	Returns the min, max, and average temperatures calculated from the given start date to the given end date 
-Coding Conventions and Formatting 
-To receive all points, your code must
-•	Place imports at the top of the file, just after any module comments and docstrings, and before module globals and constants
-•	Name functions and variables with lowercase characters, with words separated by underscores
-•	Follow DRY (Don't Repeat Yourself) principles, creating maintainable and reusable code
-•	Use concise logic and creative engineering where possible
+  A start route that:
+    •	Accepts the start date as a parameter from the URL 
+    •	Returns the min, max, and average temperatures calculated from the given start date to the end of the dataset 
 
-* Comments 
+  A start/end route that:
+    •	Accepts the start and end dates as parameters from the URL 
+    •	Returns the min, max, and average temperatures calculated from the given start date to the given end date 
 
-•	Be well commented with concise, relevant notes that other developers can understand
-
+  Coding Conventions and Formatting: 
+    •	Place imports at the top of the file, just after any module comments and docstrings, and before module globals and constants
+    •	Name functions and variables with lowercase characters, with words separated by underscores
+    •	Follow DRY (Don't Repeat Yourself) principles, creating maintainable and reusable code
+    •	Use concise logic and creative engineering where possible
