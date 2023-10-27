@@ -37,6 +37,10 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 
     •	Pandas used to print the summary statistics for the precipitation data 
 
+![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/42a79348-efe8-4982-bcf6-f3007e714874)
+
+![Summary Statistics for Precipitation Data](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/04a33c1e-fe5c-4cfc-84bc-23632f06fc1a)
+
 
 * Station Analysis 
 
