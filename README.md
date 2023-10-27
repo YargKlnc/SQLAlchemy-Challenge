@@ -1,4 +1,4 @@
-# sqlalchemy-challenge
+# SQLAlchemy-Challenge
 UofT Data Analytics SQL Alchemy Challenge by YK
 
 # Background
