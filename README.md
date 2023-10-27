@@ -55,6 +55,7 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 
 **Part 2: Designing a Climate App Flask API Based on Initial Analysis**
 
+
 * API SQLite Connection & Landing Page 
 
     •	Correctly generate the engine to the correct sqlite file 
@@ -66,6 +67,7 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
     •	Correctly create and binds the session between the python app and database 
 
     •	Display the available routes on the landing page 
+
 
 
 * API Static Routes
@@ -85,6 +87,7 @@ A tobs route that:
     •	Returns jsonified data for the most active station (USC00519281) 
 
     •	Only returns the jsonified data for the last year of data 
+
 
 
 * API Dynamic Route 
