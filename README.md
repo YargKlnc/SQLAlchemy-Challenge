@@ -56,6 +56,8 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 
     •	Correctly plot a histogram with bins=12 for the last year of data using tobs as the column to count
 
+![Station USC00519281 Temperature Observation](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/658b881a-8e55-46f8-93cb-211b878ff3c3)
+
 
 **Part 2: Designing a Climate App Flask API Based on Initial Analysis**
 
