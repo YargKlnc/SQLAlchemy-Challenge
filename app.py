@@ -30,6 +30,7 @@ app = Flask(__name__)
 
 # Defining a function to find the date one year from recent date 
 # as like in climate_starter.ipynb of this project to be used in below lines
+
 def last_year_date():
     session = Session(engine)
     most_recent_date = session.query(func.max(Measurement.date)).first()[0]
@@ -37,6 +38,7 @@ def last_year_date():
     session.close
     
     return(year_ago)
+
 #################################################
 # Flask Routes
 #################################################
@@ -75,18 +77,12 @@ def station():
 
     session = Session(engine)
 
-    station_data = session.query(Station.station, Station.id).all()
+    station_data = session.query(Station.station).all()
 
     session.close()
-    
-    stations_list = []
-    for station, id in station_data:
-        stations_list_dict = {}
-        stations_list["station"] = station
-        stations_list["id"] = id
-        stations_list.append(stations_list_dict)
+    station_data=list(np.ravel(station_data))
 
-    return jsonify(stations_list)
+    return jsonify(stations=station_data)
 
 
 # @app.route("/api/v1.0/tobs")
