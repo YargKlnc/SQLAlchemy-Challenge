@@ -60,16 +60,19 @@ def homepage():
     )
 
 # creating a precipitation route that returns json with the date as the key and the value as the precipitation 
-# only returns the jsonified precipitation data for the last year in the database 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     # creating session (link) from python to the database
     session = Session(engine)
 
     """List of date (as key) and precipitation (prcp) (as value) from data"""
+    # query precipitation data from last_year_date
     query_results = session.query(Measurement.date, Measurement.prcp).filter(Measurement.date >= last_year_date()).all()
+    
+    #closing session
     session.close
-
+    
+    # Create a dictionary from the row data and append to a list of precipitation
     precipitation_list = []
     for date, prcp in query_results:
         precipitation_dict = {}
@@ -77,6 +80,7 @@ def precipitation():
         precipitation_dict["precipitation"] = prcp
         precipitation_list.append(precipitation_dict)
 
+    # only returns the jsonified precipitation data for the last year in the database 
     return jsonify(Precipitations=precipitation_list)
 
 # creating a stations route that returns jsonified data of all of the stations in the database 
@@ -85,45 +89,93 @@ def station():
     # creating session (link) from python to the database
     session = Session(engine)
 
+    # query all station data
     station_data = session.query(Station.station).all()
 
+    #closing session
     session.close()
     station_data=list(np.ravel(station_data))
-
+    
+    # only returns the jsonified list of stations from the dataset
     return jsonify(Stations=station_data)
 
-# creating a tobs route that returns jsonified data for the most active station which is USC00519281
-# only returns the jsonified data for the last year of data 
+# creating a tobs route that returns jsonified data from the most active station which is USC00519281 for the previous year
 @app.route("/api/v1.0/tobs")
 def tobs():
     # creating session (link) from python to the database
     session = Session(engine)
 
-    """Return a list of passenger data including the name, age, and sex of each passenger"""
-    # Query all passengers
-    results = session.query(Passenger.name, Passenger.age, Passenger.sex).all()
+    """Return a list of tobs data for station USC00519281"""
+    # query tobs data for station USC00519281 from last_year_date 
+    tobs_data = session.query(Measurement.date, Measurement.tobs).filter(Measurement.station == 'USC00519281').\
+                filter(Measurement.date >= last_year_date()).all()
 
+    #closing session
     session.close()
 
-    # Create a dictionary from the row data and append to a list of all_passengers
-    all_passengers = []
-    for name, age, sex in results:
-        passenger_dict = {}
-        passenger_dict["name"] = name
-        passenger_dict["age"] = age
-        passenger_dict["sex"] = sex
-        all_passengers.append(passenger_dict)
+    # Create a dictionary from the row data and append to a list of tobs
+    tobs_list = []
+    for date, tobs in tobs_data:
+        tobs_dict = {}
+        tobs_dict["date"] = date
+        tobs_dict["tobs"] = tobs
+        tobs_list.append(tobs_dict)
 
-    return jsonify(all_passengers)
-
+    # only returns the jsonified data for the last year of data 
+    return jsonify(Tobs=tobs_list)
 
 # creating a start route that accepts the start date as a parameter from the URL
-# and returns the min, max, and average temperatures calculated from the given start date to the end of the dataset
-# @app.route("/api/v1.0/<start>")
+@app.route("/api/v1.0/<start>")
+def start_date(start):
+    # creating session (link) from python to the database
+    session = Session(engine)
+
+    """Return the min, max and average temperatures calculated from the given start date"""
+    # query data for tmin, tmax and tavg from a given start date 
+    start_date_tobs = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)).\
+        filter(Measurement.date >= start).all()
+    
+    #closing session
+    session.close()
+
+    # creating a dictionary for query above 
+    start_date_tobs_values = []
+    for min, max, avg in start_date_tobs:
+        start_date_tobs_dict = {}
+        start_date_tobs_dict["min temp"] = min
+        start_date_tobs_dict["max temp"] = max
+        start_date_tobs_dict["average temp"] = avg
+        start_date_tobs_values.append(start_date_tobs_dict)
+
+    # returns the min, max, and average temperatures calculated from the given start date
+    return jsonify(start_date_tobs_values)
 
 # creating a start/end route that accepts the start and end dates as parameters from the URL
-# and returns the min, max, and average temperatures calculated from the given start date to the given end date 
-# @app.route("/api/v1.0/<start>/<end>")
+@app.route("/api/v1.0/<start>/<end>")
+def start_end_date(start, end):
+    # creating session (link) from python to the database
+    session = Session(engine)
+
+    """Return the min, max and average temperatures calculated from the entered start date to an entered end date"""
+    # query data for tmin, tmax and tavg from start date to end date entered in the URL 
+    start_end_date_tobs = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)).\
+        filter(Measurement.date >= start).\
+        filter(Measurement.date <= end).all()
+
+    #closing session
+    session.close()
+
+    # creating a dictionary for query above 
+    start_end_date_tobs_values = []
+    for min, max, avg in start_end_date_tobs:
+        start_end_date_tobs_dict = {}
+        start_end_date_tobs_dict["min temp"] = min
+        start_end_date_tobs_dict["max temp"] = max
+        start_end_date_tobs_dict["average temp"] = avg
+        start_end_date_tobs_values.append(start_end_date_tobs_dict)
+
+    # returns the tmin, tmax, and tavg calculated from the entered start date and end date 
+    return jsonify(start_end_date_tobs_values)
 
 if __name__ == '__main__':
     app.run(debug=True)
