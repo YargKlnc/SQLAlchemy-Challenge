@@ -27,9 +27,6 @@ Base.prepare(autoload_with=engine)
 Measurement = Base.classes.measurement
 Station = Base.classes.station
 
-# # Create our session (link) from Python to the DB
-# session = Session(engine)
-
 #################################################
 # Flask Setup
 #################################################
@@ -66,7 +63,7 @@ def homepage():
 # only returns the jsonified precipitation data for the last year in the database 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
-
+    # creating session (link) from python to the database
     session = Session(engine)
 
     """List of date (as key) and precipitation (prcp) (as value) from data"""
@@ -80,12 +77,12 @@ def precipitation():
         precipitation_dict["precipitation"] = prcp
         precipitation_list.append(precipitation_dict)
 
-    return jsonify(precipitation_list)
+    return jsonify(Precipitations=precipitation_list)
 
 # creating a stations route that returns jsonified data of all of the stations in the database 
 @app.route("/api/v1.0/stations")
 def station():
-
+    # creating session (link) from python to the database
     session = Session(engine)
 
     station_data = session.query(Station.station).all()
@@ -93,11 +90,32 @@ def station():
     session.close()
     station_data=list(np.ravel(station_data))
 
-    return jsonify(stations=station_data)
+    return jsonify(Stations=station_data)
 
 # creating a tobs route that returns jsonified data for the most active station which is USC00519281
 # only returns the jsonified data for the last year of data 
-# @app.route("/api/v1.0/tobs")
+@app.route("/api/v1.0/tobs")
+def tobs():
+    # creating session (link) from python to the database
+    session = Session(engine)
+
+    """Return a list of passenger data including the name, age, and sex of each passenger"""
+    # Query all passengers
+    results = session.query(Passenger.name, Passenger.age, Passenger.sex).all()
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of all_passengers
+    all_passengers = []
+    for name, age, sex in results:
+        passenger_dict = {}
+        passenger_dict["name"] = name
+        passenger_dict["age"] = age
+        passenger_dict["sex"] = sex
+        all_passengers.append(passenger_dict)
+
+    return jsonify(all_passengers)
+
 
 # creating a start route that accepts the start date as a parameter from the URL
 # and returns the min, max, and average temperatures calculated from the given start date to the end of the dataset
