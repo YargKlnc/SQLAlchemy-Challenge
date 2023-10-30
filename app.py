@@ -1,4 +1,6 @@
-# Import the dependencies.
+# designing a Flask API based on the queries that were developed using Flask to create routes 
+
+# importing the dependencies
 import numpy as np
 
 import sqlalchemy
@@ -12,14 +14,19 @@ import datetime as dt
 #################################################
 # Database Setup
 #################################################
+# generating the engine to the correct sqlite file 
 engine = create_engine("sqlite:///Resources/hawaii.sqlite")
-# reflect an existing database into a new model
+
+# reflecting an existing database into a new model
 Base = automap_base()
-# reflect the tables
+
+# reflecting the tables
 Base.prepare(autoload_with=engine)
-# Save references to each table
+
+# saving references to each table in sqlite file
 Measurement = Base.classes.measurement
 Station = Base.classes.station
+
 # # Create our session (link) from Python to the DB
 # session = Session(engine)
 
@@ -28,9 +35,8 @@ Station = Base.classes.station
 #################################################
 app = Flask(__name__)
 
-# Defining a function to find the date one year from recent date 
-# as like in climate_starter.ipynb of this project to be used in below lines
-
+# defining a function to be used in below lines to find the date that is one year from recent date
+# binding the session between the python app and database  
 def last_year_date():
     session = Session(engine)
     most_recent_date = session.query(func.max(Measurement.date)).first()[0]
@@ -42,6 +48,8 @@ def last_year_date():
 #################################################
 # Flask Routes
 #################################################
+
+# displaying available routes on the landing page which is homepage
 @app.route("/")
 def homepage():
     """Available api routes"""
@@ -54,6 +62,8 @@ def homepage():
         f"/api/v1.0/<start>/<end>"
     )
 
+# creating a precipitation route that returns json with the date as the key and the value as the precipitation 
+# only returns the jsonified precipitation data for the last year in the database 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
 
@@ -72,6 +82,7 @@ def precipitation():
 
     return jsonify(precipitation_list)
 
+# creating a stations route that returns jsonified data of all of the stations in the database 
 @app.route("/api/v1.0/stations")
 def station():
 
@@ -84,11 +95,16 @@ def station():
 
     return jsonify(stations=station_data)
 
-
+# creating a tobs route that returns jsonified data for the most active station which is USC00519281
+# only returns the jsonified data for the last year of data 
 # @app.route("/api/v1.0/tobs")
 
+# creating a start route that accepts the start date as a parameter from the URL
+# and returns the min, max, and average temperatures calculated from the given start date to the end of the dataset
 # @app.route("/api/v1.0/<start>")
 
+# creating a start/end route that accepts the start and end dates as parameters from the URL
+# and returns the min, max, and average temperatures calculated from the given start date to the given end date 
 # @app.route("/api/v1.0/<start>/<end>")
 
 if __name__ == '__main__':
