@@ -41,7 +41,8 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 ![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/42a79348-efe8-4982-bcf6-f3007e714874)
 
 
-![Summary Statistics for Precipitation Data](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/04a33c1e-fe5c-4cfc-84bc-23632f06fc1a)
+
+![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/cd8dfa98-bb40-4f2f-ab03-588c15c71a66)
 
 
 
@@ -60,7 +61,8 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
     •	Correctly plot a histogram with bins=12 for the last year of data using tobs as the column to count
 
 
-![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/cd8dfa98-bb40-4f2f-ab03-588c15c71a66)
+
+![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/1b2a43c4-3915-4d45-96f8-7398bbbdcf06)
 
 
 
