@@ -95,6 +95,8 @@ def station():
 
     #closing session
     session.close()
+
+    # converting list of tuples into normal list
     station_data=list(np.ravel(station_data))
     
     # only returns the jsonified list of stations from the dataset
