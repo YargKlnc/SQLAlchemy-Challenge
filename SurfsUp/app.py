@@ -33,10 +33,11 @@ Station = Base.classes.station
 app = Flask(__name__)
 
 # defining a function to be used in below lines to find the date that is one year from recent date
-# binding the session between the python app and database  
 def last_year_date():
+    # creating session (link) from python to the database
     session = Session(engine)
-    most_recent_date = session.query(func.max(Measurement.date)).first()[0]
+    # getting most recent measurement date from climate_starter.ipynb of this work
+    # possible to get with; most_recent_date = session.query(func.max(Measurement.date)).first()[0]
     year_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     session.close
     
