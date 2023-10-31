@@ -35,11 +35,14 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 
     •	The results are plotted by using the DataFrame plot method with date as the x and precipitation as the y variables
 
-    •	Pandas used to print the summary statistics for the precipitation data 
+    •	Pandas used to print the summary statistics for the precipitation data
+  
 
 ![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/42a79348-efe8-4982-bcf6-f3007e714874)
 
+
 ![Summary Statistics for Precipitation Data](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/04a33c1e-fe5c-4cfc-84bc-23632f06fc1a)
+
 
 
 * Station Analysis 
@@ -56,7 +59,9 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
 
     •	Correctly plot a histogram with bins=12 for the last year of data using tobs as the column to count
 
-![Station USC00519281 Temperature Observation](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/658b881a-8e55-46f8-93cb-211b878ff3c3)
+
+![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/cd8dfa98-bb40-4f2f-ab03-588c15c71a66)
+
 
 
 **Part 2: Designing a Climate App Flask API Based on Initial Analysis**
