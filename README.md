@@ -113,13 +113,3 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
    
     •	Returns the min, max, and average temperatures calculated from the given start date to the given end date 
 
-
-    Coding Conventions and Formatting:
-  
-    •	Place imports at the top of the file, just after any module comments and docstrings, and before module globals and constants
-  
-    •	Name functions and variables with lowercase characters, with words separated by underscores
-  
-    •	Follow DRY (Don't Repeat Yourself) principles, creating maintainable and reusable code
-  
-    •	Use concise logic and creative engineering where possible
