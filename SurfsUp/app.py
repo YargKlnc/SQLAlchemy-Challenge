@@ -56,8 +56,8 @@ def homepage():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end>"
+        f"/api/v1.0/enter_start_date/<start><br/>"
+        f"/api/v1.0/enter_start_end_dates/<start>/<end>"
     )
 
 # creating a precipitation route that returns json with the date as the key and the value as the precipitation 
@@ -126,7 +126,7 @@ def tobs():
     return jsonify(Tobs=tobs_list)
 
 # creating a start route that accepts the start date as a parameter from the URL
-@app.route("/api/v1.0/<start>")
+@app.route("/api/v1.0/enter_start_date/<start>")
 def start_date(start):
     # creating session (link) from python to the database
     session = Session(engine)
@@ -152,7 +152,7 @@ def start_date(start):
     return jsonify(start_date_tobs_values)
 
 # creating a start/end route that accepts the start and end dates as parameters from the URL
-@app.route("/api/v1.0/<start>/<end>")
+@app.route("/api/v1.0/enter_start_end_dates/<start>/<end>")
 def start_end_date(start, end):
     # creating session (link) from python to the database
     session = Session(engine)
