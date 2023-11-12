@@ -1,6 +1,8 @@
 # SQLAlchemy-Challenge
 UofT Data Analytics SQL Alchemy Challenge by YK
 
+![image](https://github.com/YargKlnc/SQLAlchemy-Challenge/assets/142269763/4d1a6891-79dc-4b6b-bd4c-97269e3164db)
+
 # Background
 
 **"A trip planning project! Decided for a long holiday vacation in Honolulu, Hawaii this work will help to plan the trip with climate and precipitation analysis about the area."**
@@ -118,5 +120,9 @@ Python, SQLAlchemy, ORM queries, Pandas, and Matplotlib has been used for climat
   
     •	Accepts the start and end dates as parameters from the URL
    
-    •	Returns the min, max, and average temperatures calculated from the given start date to the given end date 
+    •	Returns the min, max, and average temperatures calculated from the given start date to the given end date
+
+# References
+SQL Alchemy photo taken from and all rights belongs to hackersandslackers.com
+https://hackersandslackers.com/database-queries-sqlalchemy-orm/
 
